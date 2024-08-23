@@ -72,15 +72,16 @@ public class player : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Ground")
+        if (collision.gameObject.tag == "Ground" && collision.gameObject.tag == "boss")
         {
-            if (jumpCount > 0) jumpCount = 1;
+            if (jumpCount >=0) jumpCount = 1;
             jumpCount = 1;
+
         }
     }
     private void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && jumpCount <= 1 && jumpCount > 0)
+        if (Input.GetKeyDown(KeyCode.Space) && jumpCount <= 1 && jumpCount >=0)
         {
             rb.AddForce(Vector3.up * jumpPower, ForceMode2D.Impulse);
             jumpCount--;
