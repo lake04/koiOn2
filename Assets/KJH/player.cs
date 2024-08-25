@@ -38,7 +38,6 @@ public class player : MonoBehaviour
         Jump();
         attack();
 
-
     }
     private void FixedUpdate()
     {
@@ -70,9 +69,9 @@ public class player : MonoBehaviour
             defaultSpeed = moveSpeed;
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Ground" && collision.gameObject.tag == "boss")
+        if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == "boss")
         {
             if (jumpCount >=0) jumpCount = 1;
             jumpCount = 1;
@@ -85,7 +84,6 @@ public class player : MonoBehaviour
         {
             rb.AddForce(Vector3.up * jumpPower, ForceMode2D.Impulse);
             jumpCount--;
-
         }
     }
 
@@ -100,10 +98,14 @@ public class player : MonoBehaviour
                 Collider2D[] collider2D = Physics2D.OverlapBoxAll(pos2.position, boxSize, 0);
                 foreach (Collider2D collider in collider2D)
                 {
-                    Debug.Log(collider.tag);
+                    if(collider.tag == "boss")
+                    {
+                        collider.GetComponent<boss>().TakeDamage(1);
+                    }
+                    
                 }
                 Debug.Log("2");
-                curTime = 3;
+                curTime = 1;
                 Invoke("outatt", 1f);
 
             }
@@ -112,10 +114,13 @@ public class player : MonoBehaviour
                 Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(pos.position, boxSize, 0);
                 foreach (Collider2D collider in collider2Ds)
                 {
-                    Debug.Log(collider.tag);
+                    if (collider.tag == "boss")
+                    {
+                        collider.GetComponent<boss>().TakeDamage(1);
+                    }
                 }
                 Debug.Log("1");
-                curTime = 3;
+                curTime = 1;
                 Invoke("outatt", 1f);
             }
         }

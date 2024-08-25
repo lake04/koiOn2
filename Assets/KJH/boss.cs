@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class boss : MonoBehaviour
 {
-    public float hp = 10f;
+    
+    public  float hp = 100f;
+    public float ptHp = 10;
     [SerializeField]
     GameObject enemy;
     Animator anim;
+    //스폰 위치
     public  Transform spawn;
 
-
-    private float coolTime = 2f;
+    //소환 패턴 쿨타임
+    private float coolTime = 10f;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,13 +39,12 @@ public class boss : MonoBehaviour
 
     private void attack()
     {
-        if (hp >0 && coolTime <= 0)
+        if (hp == 90)
         {
-            
-            hp--;
+
+            ptHp--;
 
             Instantiate(enemy, spawn.position, spawn.rotation);
-            coolTime = 2f;
 
         }
         if (coolTime >= 0)
@@ -51,5 +53,10 @@ public class boss : MonoBehaviour
             coolTime = coolTime - Time.deltaTime;
         }
 
+    }
+
+    public void TakeDamage(int damage)
+    {
+        hp = hp - damage;
     }
 }
