@@ -14,7 +14,7 @@ public class boss : MonoBehaviour
     public  Transform spawn;
 
     //소환 패턴 쿨타임
-    private float coolTime = 10f;
+    private float coolTime = 5f;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,18 +39,63 @@ public class boss : MonoBehaviour
 
     private void attack()
     {
-        if (hp == 90)
+       
+       if(coolTime>=0)
         {
-
-            ptHp--;
-            Instantiate(enemy, spawn.position, spawn.rotation);
-
+            coolTime-=Time.deltaTime;
         }
-        if (coolTime >= 0)
+
+        if (coolTime <= 0)
         {
-      
-            coolTime = coolTime - Time.deltaTime;
+            if (hp == 90)
+            {
+                Instantiate(enemy, spawn.position, spawn.rotation);
+                coolTime = 5f;
+            }
+
+            if (hp == 80)
+            { 
+                Instantiate(enemy, spawn.position, spawn.rotation);
+                coolTime = 5f;
+            }
+            if (hp == 70)
+            {
+                Instantiate(enemy, spawn.position, spawn.rotation);
+                coolTime = 5f;
+            }
+            if (hp == 60)
+            {
+                Instantiate(enemy, spawn.position, spawn.rotation);
+                coolTime = 5f;
+            }
+            if (hp ==50)
+            {
+                Instantiate(enemy, spawn.position, spawn.rotation);
+                coolTime = 5f;
+            }
+            if (hp == 40)
+            {
+                Instantiate(enemy, spawn.position, spawn.rotation);
+                coolTime = 5f;
+            }
+            if (hp == 30)
+            {
+                Instantiate(enemy, spawn.position, spawn.rotation);
+                coolTime = 5f;
+            }
+            if (hp == 20)
+            {
+                Instantiate(enemy, spawn.position, spawn.rotation);
+                coolTime = 5f;
+            }
+            if (hp == 10)
+            {
+                Instantiate(enemy, spawn.position, spawn.rotation);
+                coolTime = 5f;
+            }
+           
         }
+
 
     }
 

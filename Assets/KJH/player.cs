@@ -7,7 +7,7 @@ public class player : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public float defaultSpeed = 10f;//달리기
-    int jumpCount = 1;
+    public bool isJump;
     public float jumpPower = 10f;
 
     private float curTime;
@@ -35,7 +35,15 @@ public class player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Jump();
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (isJump)
+            {
+                rb.velocity = Vector2.up * jumpPower;
+                isJump = false;
+
+            }
+        }
         attack();
 
     }
@@ -71,21 +79,23 @@ public class player : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == "boss")
+        if (collision.gameObject.CompareTag("ground"))
         {
-            if (jumpCount >=0) jumpCount = 1;
-            jumpCount = 1;
-
-        }
-    } 
-    private void Jump()
-    {
-        if (Input.GetKeyDown(KeyCode.Space) && jumpCount <= 2 && jumpCount >=0)
-        {
-            rb.AddForce(Vector3.up * jumpPower, ForceMode2D.Impulse);
-            jumpCount--;
+            isJump = true;
         }
     }
+
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if ( collision.gameObject.tag == "boss")
+        {
+            isJump = true;
+
+        }
+    }
+      
 
 
     private void attack()
@@ -100,7 +110,7 @@ public class player : MonoBehaviour
                 {
                     if(collider.tag == "boss")
                     {
-                        collider.GetComponent<boss>().TakeDamage(1);
+                        collider.GetComponent<boss>().TakeDamage(2);
                     }
                     
                 }
@@ -116,7 +126,7 @@ public class player : MonoBehaviour
                 {
                     if (collider.tag == "boss")
                     {
-                        collider.GetComponent<boss>().TakeDamage(1);
+                        collider.GetComponent<boss>().TakeDamage(2);
                     }
                 }
                 Debug.Log("1");
