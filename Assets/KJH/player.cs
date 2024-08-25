@@ -112,7 +112,13 @@ public class player : MonoBehaviour
                     {
                         collider.GetComponent<boss>().TakeDamage(2);
                     }
-                    
+
+
+                    if (collider.tag == "enemy")
+                    {
+                        collider.GetComponent<enemy>().TakeDamage(1);
+                    }
+
                 }
                 Debug.Log("2");
                 curTime = 1;
@@ -127,6 +133,10 @@ public class player : MonoBehaviour
                     if (collider.tag == "boss")
                     {
                         collider.GetComponent<boss>().TakeDamage(2);
+                    }
+                    if (collider.tag == "enemy")
+                    {
+                        collider.GetComponent<enemy>().TakeDamage(1);
                     }
                 }
                 Debug.Log("1");
