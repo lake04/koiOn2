@@ -43,7 +43,6 @@ public class boss : MonoBehaviour
         {
 
             ptHp--;
-
             Instantiate(enemy, spawn.position, spawn.rotation);
 
         }

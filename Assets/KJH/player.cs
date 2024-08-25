@@ -69,7 +69,7 @@ public class player : MonoBehaviour
             defaultSpeed = moveSpeed;
         }
     }
-    private void OnCollisionStay2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == "boss")
         {
@@ -77,10 +77,10 @@ public class player : MonoBehaviour
             jumpCount = 1;
 
         }
-    }
+    } 
     private void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && jumpCount <= 1 && jumpCount >=0)
+        if (Input.GetKeyDown(KeyCode.Space) && jumpCount <= 2 && jumpCount >=0)
         {
             rb.AddForce(Vector3.up * jumpPower, ForceMode2D.Impulse);
             jumpCount--;
