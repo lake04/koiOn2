@@ -6,6 +6,10 @@ TagManager:
   tags:
   - ground
   - boss
+  - teleport
+  - Ground
+  - Teleport
+  - End
   layers:
   - Default
   - TransparentFX
