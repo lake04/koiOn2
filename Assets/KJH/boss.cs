@@ -21,13 +21,15 @@ public class boss : MonoBehaviour
 
     //소환 패턴 쿨타임
    // private float coolTime = 5f;
-    private float coolTime = 5f;
+    private float coolTime = 1.5f;
     private float pattern1Time = 2f;
     private bool isAk;
+
+    public ParticleSystem da;
     // Start is called before the first frame update
     void Start()
     {
-        
+        da.Stop();
     }
 
     // Update is called once per frame
@@ -64,7 +66,7 @@ public class boss : MonoBehaviour
 
       
         yield return new WaitForSeconds(2f);
-        coolTime = 5f;
+        coolTime = 1.5f;
     }
 
     private void attack()
@@ -132,6 +134,7 @@ public class boss : MonoBehaviour
     public void TakeDamage(int damage)
     {
         hp = hp - damage;
+        da.Play();
     }
 
 }

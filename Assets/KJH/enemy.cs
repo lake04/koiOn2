@@ -8,11 +8,11 @@ public class enemy : MonoBehaviour
     public float hp = 3;
     public int EnMoveSpeed;
     public int nextMove;
-
+    public ParticleSystem da;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-
+        da.Stop();
 
         Invoke("Think", 5);
     }
@@ -58,6 +58,7 @@ public class enemy : MonoBehaviour
     public void TakeDamage(int damage)
     {
         hp = hp - damage;
+        da.Play();
     }
 
 }

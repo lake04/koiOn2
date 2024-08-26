@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class player : MonoBehaviour
 {
@@ -15,18 +17,21 @@ public class player : MonoBehaviour
     public Transform pos;
     public Transform pos2;
     public Vector2 boxSize;
-
+    [SerializeField]
+    private GameObject damagepnel;
 
     Rigidbody2D rb;
     /*Animator anim;*/
     SpriteRenderer spriteRenderer;
 
-
-
+    private float shakeTime;
+    private float shakeIntensity;
+    private float camerTime = 0.2f;
 
     // Start is called before the first frame update
     void Start()
     {
+        damagepnel.SetActive(false);
         defaultSpeed = moveSpeed;
         rb = GetComponent<Rigidbody2D>();
        /* anim = GetComponent<Animator>();*/
@@ -47,6 +52,10 @@ public class player : MonoBehaviour
         }
         attack();
       
+        if(hp <=0)
+        {
+            SceneManager.LoadScene("Title");
+        }
     }
     private void FixedUpdate()
     {
@@ -98,7 +107,12 @@ public class player : MonoBehaviour
         if (collision.gameObject.tag == "attack")
         {
             hp--;
+            //카메라 흔들기
+            OnShakeCamera(0.1f, 1f);
 
+            damagepnel.SetActive(true);
+            StartCoroutine(coolTime());
+           
         }
     }
       
@@ -166,6 +180,36 @@ public class player : MonoBehaviour
             Gizmos.DrawWireCube(pos2.position, boxSize);
 
     }
+    IEnumerator coolTime()
+    {
 
-    
+        yield return new WaitForSeconds(camerTime);
+        Debug.Log("끝");
+        damagepnel.SetActive(false);
+        camerTime = 0.2f;
+    }
+
+    public void OnShakeCamera(float shakeTime = 1.0f, float shakeIntensity = 0.1f)
+    {
+        this.shakeTime = shakeTime;
+        this.shakeIntensity = shakeIntensity;
+
+        StopCoroutine("shakebyPosition");
+        StartCoroutine("shakebyPosition");
+    }
+    private IEnumerator shakebyPosition()
+    {
+        Vector3 startPosition = transform.position;
+
+        while (shakeTime > 0.0f)
+        {
+            transform.position = startPosition + Random.insideUnitSphere * shakeIntensity;
+
+            shakeTime -= Time.deltaTime;
+
+            yield return null;
+        }
+
+        transform.position = startPosition;
+    }
 }

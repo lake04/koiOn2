@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 537e9c2efe6d81941b050d93ae78b47f
+guid: c0560fa8fb8b66e4aa6c53839c6b105e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 20
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: KLJHGVCXite-0001-Sheet (1)_0
+      name: stand_0
       rect:
         serializedVersion: 2
-        x: 62
-        y: 51
-        width: 75
-        height: 87
+        x: 12
+        y: 8
+        width: 22
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e83c2a4ebda2f7148922a3da3cc6256c
-      internalID: 761537694
+      spriteID: 84745ec958ebe174bba1288f2e5e0b66
+      internalID: -345218520
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KLJHGVCXite-0001-Sheet (1)_1
+      name: stand_1
       rect:
         serializedVersion: 2
-        x: 245
-        y: 38
-        width: 108
-        height: 108
+        x: 60
+        y: 8
+        width: 22
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e678989d9915b114f8195bb06276a69b
-      internalID: 737352058
+      spriteID: 7ba968b654dcb9245b776ead514f1503
+      internalID: 424554034
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KLJHGVCXite-0001-Sheet (1)_2
+      name: stand_2
       rect:
         serializedVersion: 2
-        x: 408
-        y: 14
-        width: 179
-        height: 170
+        x: 108
+        y: 8
+        width: 22
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ff7fd99905f64334c8e5d5db6b857053
-      internalID: -1698585735
+      spriteID: 5e093f202db056a42a9f8da8e0e492ad
+      internalID: 1010369663
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KLJHGVCXite-0001-Sheet (1)_3
+      name: stand_3
       rect:
         serializedVersion: 2
-        x: 600
-        y: 1
-        width: 187
-        height: 191
+        x: 156
+        y: 8
+        width: 22
+        height: 27
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,20 +187,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 503801fb3adcc004baa0ff73e2ad79eb
-      internalID: 442358707
+      spriteID: 537504b617962004e80d03c61f268b8b
+      internalID: 1198041223
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KLJHGVCXite-0001-Sheet (1)_4
+      name: stand_4
       rect:
         serializedVersion: 2
-        x: 804
-        y: 13
-        width: 183
-        height: 175
+        x: 204
+        y: 8
+        width: 22
+        height: 27
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,20 +208,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: afb82f8ad8884bb4b8008358d682bf05
-      internalID: 955401653
+      spriteID: ae2287b236b363042a369f32645362a9
+      internalID: 364728869
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KLJHGVCXite-0001-Sheet (1)_5
+      name: stand_5
       rect:
         serializedVersion: 2
-        x: 1004
-        y: 13
-        width: 183
-        height: 175
+        x: 252
+        y: 8
+        width: 22
+        height: 26
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,8 +229,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 64eb5661c4cadbc4f8d3690a759e096c
-      internalID: 1119473542
+      spriteID: 579e57cc2a7c157408da35e9f1fed93b
+      internalID: 1766030292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stand_6
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 8
+        width: 22
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb88586f8e3d51f43b7275857dd6ca4b
+      internalID: 1517380335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stand_7
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 8
+        width: 22
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c8a59b688d31a1469d89a2873ed0c11
+      internalID: -182252763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stand_8
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 8
+        width: 22
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f013ad81a09dab14286f1ec8dfd950de
+      internalID: -2077799882
       vertices: []
       indices: 
       edges: []
@@ -246,12 +309,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      KLJHGVCXite-0001-Sheet (1)_0: 761537694
-      KLJHGVCXite-0001-Sheet (1)_1: 737352058
-      KLJHGVCXite-0001-Sheet (1)_2: -1698585735
-      KLJHGVCXite-0001-Sheet (1)_3: 442358707
-      KLJHGVCXite-0001-Sheet (1)_4: 955401653
-      KLJHGVCXite-0001-Sheet (1)_5: 1119473542
+      stand_0: -345218520
+      stand_1: 424554034
+      stand_2: 1010369663
+      stand_3: 1198041223
+      stand_4: 364728869
+      stand_5: 1766030292
+      stand_6: 1517380335
+      stand_7: -182252763
+      stand_8: -2077799882
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
