@@ -26,6 +26,10 @@ public class boss : MonoBehaviour
     {
         attack();
         StartCoroutine(pattern1());
+        if(hp<=0)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
 
@@ -98,6 +102,7 @@ public class boss : MonoBehaviour
 
 
     }
+    
 
     public void TakeDamage(int damage)
     {
