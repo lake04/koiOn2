@@ -9,6 +9,7 @@ public class player : MonoBehaviour
     public float defaultSpeed = 10f;//달리기
     public bool isJump;
     public float jumpPower = 10f;
+    public int hp = 3;
 
     private float curTime;
     public Transform pos;
@@ -45,7 +46,7 @@ public class player : MonoBehaviour
             }
         }
         attack();
-
+      
     }
     private void FixedUpdate()
     {
@@ -92,6 +93,11 @@ public class player : MonoBehaviour
         if ( collision.gameObject.tag == "boss")
         {
             isJump = true;
+
+        }
+        if (collision.gameObject.tag == "attack")
+        {
+            hp--;
 
         }
     }
@@ -160,4 +166,6 @@ public class player : MonoBehaviour
             Gizmos.DrawWireCube(pos2.position, boxSize);
 
     }
+
+    
 }
