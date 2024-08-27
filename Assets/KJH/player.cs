@@ -93,6 +93,19 @@ public class player : MonoBehaviour
         {
             isJump = true;
         }
+
+        if (collision.gameObject.tag == "enemy")
+        {
+            hp--;
+            //무적 타임
+            OnDamged(collision.transform.position);
+
+            //카메라 흔들기
+            OnShakeCamera(0.1f, 1f);
+
+            damagepnel.SetActive(true);
+            StartCoroutine(coolTime());
+        }
     }
 
 
@@ -102,18 +115,22 @@ public class player : MonoBehaviour
         if ( collision.gameObject.tag == "boss")
         {
             isJump = true;
-
+           
         }
         if (collision.gameObject.tag == "attack")
         {
             hp--;
+            //무적 타임
+            OnDamged(collision.transform.position);
             //카메라 흔들기
             OnShakeCamera(0.1f, 1f);
-
+          
             damagepnel.SetActive(true);
             StartCoroutine(coolTime());
            
         }
+
+      
     }
       
 
@@ -153,6 +170,7 @@ public class player : MonoBehaviour
                     if (collider.tag == "boss")
                     {
                         collider.GetComponent<boss>().TakeDamage(2);
+                        
                     }
                     if (collider.tag == "enemy")
                     {
@@ -211,5 +229,23 @@ public class player : MonoBehaviour
         }
 
         transform.position = startPosition;
+    }
+
+    void OnDamged(Vector2 targetPos)
+    {
+   
+        //Change layer (Immprtal Active)
+        gameObject.layer = 9;
+
+        //View Alpha
+        spriteRenderer.color = new Color(1, 1, 1, 0.4f);
+
+        Invoke("OffDamged", 3);
+    }
+    void OffDamged()
+    {
+        gameObject.layer = 11;
+        spriteRenderer.color = new Color(1, 1, 1, 1);
+
     }
 }

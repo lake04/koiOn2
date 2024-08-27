@@ -249,12 +249,13 @@ Transform:
   m_GameObject: {fileID: 9979345}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 30.97, y: 1.81, z: 1}
+  m_LocalPosition: {x: 30.96, y: 0.8, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2087868663}
   - {fileID: 297021374}
+  - {fileID: 1611039303}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &9979349
@@ -303,7 +304,7 @@ MonoBehaviour:
   ak: {fileID: 1168482663}
   ak2: {fileID: 942105664}
   spawn: {fileID: 2087868663}
-  bullt: {fileID: 297021374}
+  bulltSp: {fileID: 297021374}
   da: {fileID: 1611039302}
 --- !u!95 &9979351
 Animator:
@@ -584,7 +585,7 @@ GameObject:
   - component: {fileID: 519420029}
   - component: {fileID: 519420034}
   - component: {fileID: 519420033}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -950,13 +951,13 @@ GameObject:
   - component: {fileID: 942105667}
   - component: {fileID: 942105666}
   - component: {fileID: 942105665}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: attack (1)
   m_TagString: attack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!61 &942105665
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1044,7 +1045,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 0.34509805}
+  m_Color: {r: 1, g: 0, b: 0, a: 0.6039216}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1063,7 +1064,7 @@ Transform:
   m_GameObject: {fileID: 942105664}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.21900901, w: 0.9757229}
-  m_LocalPosition: {x: 31.53, y: 2.66, z: 0}
+  m_LocalPosition: {x: 33.2, y: 1.16, z: 0}
   m_LocalScale: {x: 15, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1086,7 +1087,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!199 &956931536
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -1176,7 +1177,7 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
-  looping: 0
+  looping: 1
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
@@ -5913,7 +5914,7 @@ GameObject:
   - component: {fileID: 1020935415}
   - component: {fileID: 1020935416}
   - component: {fileID: 1020935417}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -6026,7 +6027,7 @@ Transform:
   m_GameObject: {fileID: 1020935411}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.819, y: -1.262, z: 0}
+  m_LocalPosition: {x: 27.81, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6077,8 +6078,8 @@ MonoBehaviour:
   moveSpeed: 5
   defaultSpeed: 10
   isJump: 0
-  jumpPower: 7
-  hp: 3
+  jumpPower: 6
+  hp: 6
   pos: {fileID: 1760798791}
   pos2: {fileID: 1590120211}
   boxSize: {x: 1, y: 1}
@@ -6192,13 +6193,13 @@ GameObject:
   - component: {fileID: 1168482665}
   - component: {fileID: 1168482664}
   - component: {fileID: 1168482666}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: attack
   m_TagString: attack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &1168482664
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6241,7 +6242,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 0.34509805}
+  m_Color: {r: 1, g: 0, b: 0, a: 0.6039216}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -6260,7 +6261,7 @@ Transform:
   m_GameObject: {fileID: 1168482663}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.2598461, w: 0.9656501}
-  m_LocalPosition: {x: 31.31, y: 3.27, z: 0}
+  m_LocalPosition: {x: 32.06, y: 2.62, z: 0}
   m_LocalScale: {x: 15, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11316,6 +11317,7 @@ MonoBehaviour:
   end: {fileID: 2113790249}
   ui: {fileID: 463356079}
   da: {fileID: 1367428414}
+  isTeleport: 0
 --- !u!1 &1496456900
 GameObject:
   m_ObjectHideFlags: 0
@@ -11409,7 +11411,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1590120211}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: leftAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11761,7 +11763,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 10
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -11815,7 +11817,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.99215686, g: 0.4491541, b: 0.1764706, a: 1}
+      maxColor: {r: 0.8283019, g: 0.88108146, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -11879,7 +11881,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.48
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -12144,7 +12146,7 @@ ParticleSystem:
     startRotation:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 0.022863813
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -12194,16 +12196,16 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    randomizeRotationDirection: 0
+    randomizeRotationDirection: 0.69
     gravitySource: 0
-    maxNumParticles: 1000
+    maxNumParticles: 855
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
     rotation3D: 0
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 0.8
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -12257,7 +12259,7 @@ ParticleSystem:
     serializedVersion: 6
     enabled: 1
     type: 4
-    angle: 25
+    angle: 1
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
@@ -12332,7 +12334,7 @@ ParticleSystem:
     m_UseMeshMaterialIndex: 0
     m_UseMeshColors: 1
     alignToDirection: 0
-    m_Texture: {fileID: 0}
+    m_Texture: {fileID: 2800000, guid: 2ce5c55e85304b819a1826ecbc839aa5, type: 3}
     m_TextureClipChannel: 3
     m_TextureClipThreshold: 0
     m_TextureUVChannel: 0
@@ -12343,7 +12345,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 1
+      value: 5
       mode: 0
       spread: 0
       speed:
@@ -16356,12 +16358,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1611039300}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 30.79, y: -0.09, z: -0.2}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -0.02, y: -0.64, z: -1.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 9979348}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!1 &1647497942
 GameObject:
@@ -16577,7 +16579,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1760798791}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16936,6 +16938,7 @@ MonoBehaviour:
   end: {fileID: 1448614099}
   ui: {fileID: 1496456900}
   da: {fileID: 956931537}
+  isTeleport: 0
 --- !u!1 &2121453785
 GameObject:
   m_ObjectHideFlags: 0
@@ -16984,8 +16987,7 @@ SceneRoots:
   - {fileID: 1168482665}
   - {fileID: 942105667}
   - {fileID: 1600736521}
-  - {fileID: 1611039303}
-  - {fileID: 956931538}
   - {fileID: 1367428415}
   - {fileID: 1496456902}
   - {fileID: 463356081}
+  - {fileID: 956931538}

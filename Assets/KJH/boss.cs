@@ -5,8 +5,8 @@ using UnityEngine;
 public class boss : MonoBehaviour
 {
     
-    public  float hp = 100f;
-    public float ptHp = 10;
+    public  int hp = 100;
+ 
     [SerializeField]
     GameObject enemy;
     [SerializeField]
@@ -17,7 +17,7 @@ public class boss : MonoBehaviour
     Animator anim;
     //스폰 위치
     public  Transform spawn;
-    public  Transform bullt;
+    public  Transform bulltSp;
 
     //소환 패턴 쿨타임
    // private float coolTime = 5f;
@@ -25,23 +25,31 @@ public class boss : MonoBehaviour
     private float pattern1Time = 2f;
     private bool isAk;
 
+    private float shakeTime;
+    private float shakeIntensity;
+    private float camerTime = 0.2f;
+
     public ParticleSystem da;
+
+    bool hasSpawned = false;
     // Start is called before the first frame update
     void Start()
     {
         da.Stop();
+        /*InvokeRepeating("bulltSpawn", 2f, 3f);*/
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-        attack();
-    
+        /*attack();*/
+        SpawnEnemyAtHP(hp);
         if (coolTime<=0)
         {
             ak.SetActive(true);
             ak2.SetActive(true);
-          /*  Instantiate(bullet, bullt.transform.position, bullt.rotation);*/
+           
             StartCoroutine(pattern1());
                   
         }
@@ -63,11 +71,19 @@ public class boss : MonoBehaviour
 
     private IEnumerator pattern1()
     {
-
-      
         yield return new WaitForSeconds(2f);
         coolTime = 1.5f;
     }
+    void SpawnEnemyAtHP(int hp)
+    {
+        if (hp % 10 == 0 && hp <= 90 && hp >= 10&& !hasSpawned)  // 90부터 10까지 10단위로 체크
+        {
+            Instantiate(enemy, spawn.position, spawn.rotation);
+            pattern1Time = 2f;
+            hasSpawned = true;
+        }
+    }
+
 
     private void attack()
     {
@@ -135,6 +151,45 @@ public class boss : MonoBehaviour
     {
         hp = hp - damage;
         da.Play();
+
+        OnShakeCamera(0.1f, 0.3f);
+
     }
 
+    public void OnShakeCamera(float shakeTime = 1.0f, float shakeIntensity = 0.1f)
+    {
+        this.shakeTime = shakeTime;
+        this.shakeIntensity = shakeIntensity;
+
+        StopCoroutine("shakebyPosition");
+        StartCoroutine("shakebyPosition");
+    }
+    private IEnumerator shakebyPosition()
+    {
+        Vector3 startPosition = transform.position;
+
+        while (shakeTime > 0.0f)
+        {
+            transform.position = startPosition + Random.insideUnitSphere * shakeIntensity;
+
+            shakeTime -= Time.deltaTime;
+
+            yield return null;
+        }
+
+        transform.position = startPosition;
+    }
+
+    private IEnumerator pattern12()
+    {
+
+
+        yield return new WaitForSeconds(2f);
+        coolTime = 1.5f;
+    }
+
+    private void bulltSpawn()
+    {
+        Instantiate(bullet, bulltSp.transform.position, Quaternion.identity);
+    }
 }

@@ -8,6 +8,7 @@ TagManager:
   - boss
   - enemy
   - attack
+  - onDamge
   layers:
   - Default
   - TransparentFX
@@ -18,10 +19,10 @@ TagManager:
   - boss
   - ground
   - postProcess
-  - 
-  - 
-  - 
-  - 
+  - onDamge
+  - attack
+  - player
+  - enemy
   - 
   - 
   - 
