@@ -12,8 +12,6 @@ public class boss : MonoBehaviour
     [SerializeField]
     GameObject bullet;
 
-    public GameObject ak;
-    public GameObject ak2;
     Animator anim;
     //스폰 위치
     public  Transform spawn;
@@ -46,19 +44,12 @@ public class boss : MonoBehaviour
         /*attack();*/
         SpawnEnemyAtHP(hp);
         if (coolTime<=0)
-        {
-            ak.SetActive(true);
-            ak2.SetActive(true);
-           
-            StartCoroutine(pattern1());
-                  
+        { 
+            StartCoroutine(pattern1());       
         }
         else if(coolTime >=0)
         {
             coolTime -= Time.deltaTime;
-           
-            ak.SetActive(false);
-            ak2 .SetActive(false);
         }
       
 
