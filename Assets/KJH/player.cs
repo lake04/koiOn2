@@ -25,7 +25,7 @@ public class player : MonoBehaviour
     private GameObject damagepnel;
 
     Rigidbody2D rb;
-    /*Animator anim;*/
+    Animator anim;
     SpriteRenderer spriteRenderer;
 
     //카메라 흔들림
@@ -42,7 +42,7 @@ public class player : MonoBehaviour
         damagepnel.SetActive(false);
         defaultSpeed = moveSpeed;
         rb = GetComponent<Rigidbody2D>();
-       /* anim = GetComponent<Animator>();*/
+        anim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
@@ -51,11 +51,12 @@ public class player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            anim.SetBool("isJump", true);
             if (isJump)
             {
                 rb.velocity = Vector2.up * jumpPower;
                 isJump = false;
-
+               
             }
         }
         attack();
@@ -73,7 +74,7 @@ public class player : MonoBehaviour
     {
         if (Input.GetButton("Horizontal"))
         {
-          /*  anim.SetBool("iswalking", true);*/
+            anim.SetBool("isWalk", true);
             float h = Input.GetAxisRaw("Horizontal");
             Vector3 dir = new Vector3(h, 0f, 0f).normalized;
             transform.Translate(dir * defaultSpeed * Time.deltaTime);
@@ -83,7 +84,8 @@ public class player : MonoBehaviour
 
         else
         {
-            /*anim.SetBool("iswalking", false);*/
+            anim.SetBool("isWalk", false);
+            anim.SetBool("isJump", false);
         }
 
         //달리기
@@ -93,6 +95,7 @@ public class player : MonoBehaviour
         }
         else
         {
+            
             defaultSpeed = moveSpeed;
         }
     }
@@ -165,7 +168,7 @@ public class player : MonoBehaviour
 
                     if (collider.tag == "enemy")
                     {
-                        collider.GetComponent<enemy>().TakeDamage(1);
+                        collider.GetComponent<bosseEnemy>().TakeDamage(1);
                     }
 
                 }
@@ -186,7 +189,7 @@ public class player : MonoBehaviour
                     }
                     if (collider.tag == "enemy")
                     {
-                        collider.GetComponent<enemy>().TakeDamage(1);
+                        collider.GetComponent<bosseEnemy>().TakeDamage(1);
                     }
                 }
                 Debug.Log("1");

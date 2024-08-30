@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 62efbb4071278e44e97cf11f8d6fd405
+guid: 1ed2c0adcf719564f85f7c2230efe41f
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -110,11 +110,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: walk1_0
+      name: sXDCFcvdf-0001-Sheet_0
       rect:
         serializedVersion: 2
-        x: 12
-        y: 6
+        x: 10
+        y: 1
         width: 22
         height: 24
       alignment: 0
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1ab50723f1f24e14e8038982e707d972
-      internalID: 1614913482
+      spriteID: 5588d95bdbbb062409c073edcc7427ba
+      internalID: -1653167312
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk1_1
+      name: sXDCFcvdf-0001-Sheet_1
       rect:
         serializedVersion: 2
-        x: 60
-        y: 6
-        width: 22
-        height: 25
+        x: 58
+        y: 1
+        width: 23
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,17 +145,122 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 787172c5f6e83534b9d66278f143f889
-      internalID: 1962891436
+      spriteID: a2933658da25b8b4d956df8fac56245d
+      internalID: -875560948
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk1_2
+      name: sXDCFcvdf-0001-Sheet_2
       rect:
         serializedVersion: 2
-        x: 108
+        x: 106
+        y: 1
+        width: 22
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 694aad8e008185b44a863ebae8d04e3e
+      internalID: 483698100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sXDCFcvdf-0001-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 11
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67f1238dd11a21c4eb462eb25b197943
+      internalID: 1626532688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sXDCFcvdf-0001-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 11
+        width: 24
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 396247aa3a4e31d42968541a92495b71
+      internalID: 238545143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sXDCFcvdf-0001-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 11
+        width: 24
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f168f1f26be87964cb9df4790f11e90f
+      internalID: -1134977079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sXDCFcvdf-0001-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 8
+        width: 22
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5876311d5123e5e43b5cf5e08bc7d48d
+      internalID: 1302302643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sXDCFcvdf-0001-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 346
         y: 6
         width: 22
         height: 28
@@ -166,20 +271,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 14d17734b9c5fb8429f59409c88dff7f
-      internalID: -251429424
+      spriteID: a87db7d63b95b8b4db950e4ba41eaf63
+      internalID: -287817334
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk1_3
+      name: sXDCFcvdf-0001-Sheet_8
       rect:
         serializedVersion: 2
-        x: 156
-        y: 6
+        x: 394
+        y: 5
         width: 22
-        height: 25
+        height: 23
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,102 +292,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 901c74e2e404bff4f9aff5d29fc6a82d
-      internalID: 2101634329
+      spriteID: a9defa5e9530e6a48bf39a7afab04b6a
+      internalID: 609551076
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk1_4
+      name: sXDCFcvdf-0001-Sheet_9
       rect:
         serializedVersion: 2
-        x: 204
-        y: 6
-        width: 22
-        height: 25
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a768acb407ce0b844abbc161bedffaa6
-      internalID: -1823365619
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walk1_5
-      rect:
-        serializedVersion: 2
-        x: 252
-        y: 6
-        width: 22
-        height: 25
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 626781caa292e854e801c26c5d408f35
-      internalID: 1757326823
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walk1_6
-      rect:
-        serializedVersion: 2
-        x: 300
-        y: 6
-        width: 25
-        height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 78c8bf5fdd7a3be4281cbbd3bf9272aa
-      internalID: 1952885799
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walk1_7
-      rect:
-        serializedVersion: 2
-        x: 348
-        y: 6
-        width: 23
-        height: 27
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a41cea1d5da1f3647b2f2646d1420125
-      internalID: 937528689
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walk1_8
-      rect:
-        serializedVersion: 2
-        x: 396
-        y: 6
+        x: 442
+        y: 1
         width: 22
         height: 24
       alignment: 0
@@ -292,8 +313,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 776c1c821d9e43d408fc90fb4aa11670
-      internalID: 1147982414
+      spriteID: 35b4d7ec49621fd48b2533fbf62e4d5f
+      internalID: -1548422628
       vertices: []
       indices: 
       edges: []
@@ -309,15 +330,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      walk1_0: 1614913482
-      walk1_1: 1962891436
-      walk1_2: -251429424
-      walk1_3: 2101634329
-      walk1_4: -1823365619
-      walk1_5: 1757326823
-      walk1_6: 1952885799
-      walk1_7: 937528689
-      walk1_8: 1147982414
+      sXDCFcvdf-0001-Sheet_0: -1653167312
+      sXDCFcvdf-0001-Sheet_1: -875560948
+      sXDCFcvdf-0001-Sheet_2: 483698100
+      sXDCFcvdf-0001-Sheet_3: 1626532688
+      sXDCFcvdf-0001-Sheet_4: 238545143
+      sXDCFcvdf-0001-Sheet_5: -1134977079
+      sXDCFcvdf-0001-Sheet_6: 1302302643
+      sXDCFcvdf-0001-Sheet_7: -287817334
+      sXDCFcvdf-0001-Sheet_8: 609551076
+      sXDCFcvdf-0001-Sheet_9: -1548422628
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -9,14 +9,12 @@ public class teleport : MonoBehaviour
     //도착 지점
     public GameObject end;
     public GameObject ui;
-    //파티클
-    public ParticleSystem da;
 
     public bool isTeleport;
     // Start is called before the first frame update
     void Start()
     {
-        da.Stop();
+
     }
 
     // Update is called once per frame
@@ -26,7 +24,6 @@ public class teleport : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                da.Play();
                
                 player.transform.position = end.transform.position;
             }
