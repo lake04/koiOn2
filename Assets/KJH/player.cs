@@ -7,16 +7,20 @@ using UnityEngine.UI;
 
 public class player : MonoBehaviour
 {
+    [Header("player")]
     public float moveSpeed = 5f;
     public float defaultSpeed = 10f;//달리기
     public bool isJump;
     public float jumpPower = 10f;
     public int hp = 3;
 
+    [Header("attack")]
     private float curTime;
     public Transform pos;
     public Transform pos2;
     public Vector2 boxSize;
+
+    //피격 이펙트
     [SerializeField]
     private GameObject damagepnel;
 
@@ -24,10 +28,14 @@ public class player : MonoBehaviour
     /*Animator anim;*/
     SpriteRenderer spriteRenderer;
 
+    //카메라 흔들림
     private float shakeTime;
     private float shakeIntensity;
     private float camerTime = 0.2f;
 
+    //무적
+    private bool isInvincible = false;
+    private float invincibleDuration = 2.0f; // 무적 상태 유지 시간 (예: 2초)
     // Start is called before the first frame update
     void Start()
     {
@@ -38,7 +46,7 @@ public class player : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
@@ -78,6 +86,7 @@ public class player : MonoBehaviour
             /*anim.SetBool("iswalking", false);*/
         }
 
+        //달리기
         if (Input.GetKey(KeyCode.LeftShift))
         {
             defaultSpeed = 8;
@@ -94,7 +103,8 @@ public class player : MonoBehaviour
             isJump = true;
         }
 
-        if (collision.gameObject.tag == "enemy")
+        //피격
+        if (collision.gameObject.tag == "enemy" && !isInvincible)
         {
             hp--;
             //무적 타임
@@ -105,6 +115,7 @@ public class player : MonoBehaviour
 
             damagepnel.SetActive(true);
             StartCoroutine(coolTime());
+            StartCoroutine(damgePanel());
         }
     }
 
@@ -117,6 +128,7 @@ public class player : MonoBehaviour
             isJump = true;
            
         }
+        //피격
         if (collision.gameObject.tag == "attack")
         {
             hp--;
@@ -127,7 +139,7 @@ public class player : MonoBehaviour
           
             damagepnel.SetActive(true);
             StartCoroutine(coolTime());
-           
+            StartCoroutine(damgePanel());
         }
 
       
@@ -200,11 +212,17 @@ public class player : MonoBehaviour
     }
     IEnumerator coolTime()
     {
-
+        isInvincible = true;  // 무적 상태 시작
+        yield return new WaitForSeconds(invincibleDuration);  // 무적 시간 동안 대기
+        isInvincible = false;  // 무적 상태 해제
+        
+    }
+    IEnumerator damgePanel()
+    {
         yield return new WaitForSeconds(camerTime);
-        Debug.Log("끝");
-        damagepnel.SetActive(false);
-        camerTime = 0.2f;
+         
+         damagepnel.SetActive(false);
+         camerTime = 0.2f;
     }
 
     public void OnShakeCamera(float shakeTime = 1.0f, float shakeIntensity = 0.1f)
@@ -215,6 +233,7 @@ public class player : MonoBehaviour
         StopCoroutine("shakebyPosition");
         StartCoroutine("shakebyPosition");
     }
+
     private IEnumerator shakebyPosition()
     {
         Vector3 startPosition = transform.position;
@@ -246,6 +265,5 @@ public class player : MonoBehaviour
     {
         gameObject.layer = 11;
         spriteRenderer.color = new Color(1, 1, 1, 1);
-
     }
 }

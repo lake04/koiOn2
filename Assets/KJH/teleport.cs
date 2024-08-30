@@ -6,8 +6,10 @@ public class teleport : MonoBehaviour
 {
 
     public GameObject player;
+    //도착 지점
     public GameObject end;
     public GameObject ui;
+    //파티클
     public ParticleSystem da;
 
     public bool isTeleport;
@@ -25,6 +27,7 @@ public class teleport : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 da.Play();
+               
                 player.transform.position = end.transform.position;
             }
         }

@@ -9,6 +9,7 @@ TagManager:
   - enemy
   - attack
   - onDamge
+  - taget
   layers:
   - Default
   - TransparentFX

@@ -5,7 +5,7 @@ using UnityEngine;
 public class boss : MonoBehaviour
 {
     
-    public  int hp = 100;
+    public  int hp = 52;
  
     [SerializeField]
     GameObject enemy;
@@ -20,7 +20,7 @@ public class boss : MonoBehaviour
     //소환 패턴 쿨타임
    // private float coolTime = 5f;
     private float coolTime = 1.5f;
-    private float pattern1Time = 2f;
+    private float pattern1Time = 1f;
     private bool isAk;
 
     private float shakeTime;
@@ -30,25 +30,32 @@ public class boss : MonoBehaviour
     public ParticleSystem da;
 
     bool hasSpawned = false;
+
+    
+
+  
+
     // Start is called before the first frame update
     void Start()
     {
         da.Stop();
         /*InvokeRepeating("bulltSpawn", 2f, 3f);*/
-       
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        /*attack();*/
+       
+
         SpawnEnemyAtHP(hp);
         if (coolTime<=0)
         { 
-            StartCoroutine(pattern1());       
+               
         }
         else if(coolTime >=0)
         {
+             
             coolTime -= Time.deltaTime;
         }
       
@@ -59,91 +66,33 @@ public class boss : MonoBehaviour
         }
     }
 
+ 
 
     private IEnumerator pattern1()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         coolTime = 1.5f;
     }
     void SpawnEnemyAtHP(int hp)
     {
-        if (hp % 10 == 0 && hp <= 90 && hp >= 10&& !hasSpawned)  // 90부터 10까지 10단위로 체크
+        if (hp % 10 == 0 && hp < 50 && hp >= 10&& !hasSpawned)  // 90부터 10까지 10단위로 체크
         {
             Instantiate(enemy, spawn.position, spawn.rotation);
-            pattern1Time = 2f;
             hasSpawned = true;
         }
-    }
-
-
-    private void attack()
-    {
-        if(pattern1Time>=0)
+         else if(hp%10 != 0)
         {
-            pattern1Time -= Time.deltaTime;
-        }    
-       
-        if (pattern1Time <= 0)
-        {
-            if (hp == 90)
-            {
-                Instantiate(enemy, spawn.position, spawn.rotation);
-                pattern1Time = 2f;
-            }
-
-            if (hp == 80)
-            { 
-                Instantiate(enemy, spawn.position, spawn.rotation);
-                pattern1Time = 2f;
-            }
-            if (hp == 70)
-            {
-                Instantiate(enemy, spawn.position, spawn.rotation);
-                pattern1Time = 2f;
-            }
-            if (hp == 60)
-            {
-                Instantiate(enemy, spawn.position, spawn.rotation);
-                pattern1Time = 2f;
-            }
-            if (hp ==50)
-            {
-                Instantiate(enemy, spawn.position, spawn.rotation);
-                pattern1Time = 2f;
-            }
-            if (hp == 40)
-            {
-                Instantiate(enemy, spawn.position, spawn.rotation);
-                pattern1Time = 2f;
-            }
-            if (hp == 30)
-            {
-                Instantiate(enemy, spawn.position, spawn.rotation);
-                pattern1Time = 2f;
-            }
-            if (hp == 20)
-            {
-                Instantiate(enemy, spawn.position, spawn.rotation);
-                pattern1Time = 2f;
-            }
-            if (hp == 10)
-            {
-                Instantiate(enemy, spawn.position, spawn.rotation);
-                pattern1Time = 2f;
-            }
-           
+            hasSpawned=false;
         }
-
-
     }
-    
+
 
     public void TakeDamage(int damage)
     {
         hp = hp - damage;
         da.Play();
 
-        OnShakeCamera(0.1f, 0.3f);
+        OnShakeCamera(0.1f, 0.9f);
 
     }
 
@@ -171,13 +120,7 @@ public class boss : MonoBehaviour
         transform.position = startPosition;
     }
 
-    private IEnumerator pattern12()
-    {
-
-
-        yield return new WaitForSeconds(2f);
-        coolTime = 1.5f;
-    }
+   
 
     private void bulltSpawn()
     {

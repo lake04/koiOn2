@@ -5,9 +5,14 @@ using UnityEngine;
 
 public class test : MonoBehaviour
 {
+    //일전한 범위 내에서 렌덤으로 공격
+
+    
     public GameObject rangObject;
+    //소환 범위
     BoxCollider2D rangeCollider;
     public bool isSp;
+    //소환할 오브젝트
     public GameObject att;
     private void Awake()
     {
