@@ -48,6 +48,7 @@ public class bosPtennl : MonoBehaviour
         }
     }
 
+    //보스 기본 공격 지진 느낌
    IEnumerator pttenl3()
     {
         pt2.transform.position += Vector3.right * -ptSpeed * Time.deltaTime;

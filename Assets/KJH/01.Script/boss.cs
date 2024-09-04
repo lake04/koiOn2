@@ -7,6 +7,7 @@ public class boss : MonoBehaviour
     
     public  int hp = 52;
  
+    //소환
     [SerializeField]
     GameObject enemy;
     [SerializeField]
@@ -23,6 +24,7 @@ public class boss : MonoBehaviour
     private float pattern1Time = 1f;
     private bool isAk;
 
+    //카메라
     private float shakeTime;
     private float shakeIntensity;
     private float camerTime = 0.2f;
@@ -67,7 +69,7 @@ public class boss : MonoBehaviour
     }
 
  
-
+    //소환 패턴 쿨타임
     private IEnumerator pattern1()
     {
         yield return new WaitForSeconds(1f);
@@ -86,7 +88,7 @@ public class boss : MonoBehaviour
         }
     }
 
-
+    //피격
     public void TakeDamage(int damage)
     {
         hp = hp - damage;

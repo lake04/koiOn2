@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class moveingGround : MonoBehaviour
 {
-    public Transform start;
-    public Transform end;
+
+    public Transform start; //시작 위치
+    public Transform end;  //끝 위치
     public Transform desPos;
     
 

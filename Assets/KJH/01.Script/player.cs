@@ -14,6 +14,7 @@ public class player : MonoBehaviour
     public float jumpPower = 10f;
     public int hp = 3;
 
+    //공격
     [Header("attack")]
     private float curTime;
     public Transform pos;
@@ -36,9 +37,17 @@ public class player : MonoBehaviour
     //무적
     private bool isInvincible = false;
     private float invincibleDuration = 2.0f; // 무적 상태 유지 시간 (예: 2초)
+
+    //문 관련인데 수정중
+    [SerializeField]
+    private GameObject door;
+    [SerializeField]
+    private GameObject doorEnd;
+
     // Start is called before the first frame update
     void Start()
     {
+
         damagepnel.SetActive(false);
         defaultSpeed = moveSpeed;
         rb = GetComponent<Rigidbody2D>();
@@ -48,7 +57,7 @@ public class player : MonoBehaviour
 
 
     void Update()
-    {
+    {   //점프
         if (Input.GetKeyDown(KeyCode.Space))
         {
             anim.SetBool("isJump", true);
@@ -61,9 +70,10 @@ public class player : MonoBehaviour
         }
         attack();
       
+        //씬이동
         if(hp <=0)
         {
-            SceneManager.LoadScene("Title");
+            SceneManager.LoadScene(1);
         }
     }
     private void FixedUpdate()
@@ -170,7 +180,11 @@ public class player : MonoBehaviour
                     {
                         collider.GetComponent<bosseEnemy>().TakeDamage(1);
                     }
+                    if (collider.tag == "button")
+                    {
+                        doorOpen();
 
+                    }
                 }
                 Debug.Log("2");
                 curTime = 1;
@@ -191,6 +205,11 @@ public class player : MonoBehaviour
                     {
                         collider.GetComponent<bosseEnemy>().TakeDamage(1);
                     }
+                    if(collider.tag == "button")
+                    {
+                        doorOpen();
+                        Debug.Log("B");
+                    }
                 }
                 Debug.Log("1");
                 curTime = 1;
@@ -205,7 +224,7 @@ public class player : MonoBehaviour
     }
 
     private void OnDrawGizmos()
-    {
+    {//공격 범위
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireCube(pos.position, boxSize);
 
@@ -221,13 +240,13 @@ public class player : MonoBehaviour
         
     }
     IEnumerator damgePanel()
-    {
+    {//데미지 패널 쿨타임
         yield return new WaitForSeconds(camerTime);
          
          damagepnel.SetActive(false);
          camerTime = 0.2f;
     }
-
+    //카메라
     public void OnShakeCamera(float shakeTime = 1.0f, float shakeIntensity = 0.1f)
     {
         this.shakeTime = shakeTime;
@@ -237,6 +256,7 @@ public class player : MonoBehaviour
         StartCoroutine("shakebyPosition");
     }
 
+    //카메라
     private IEnumerator shakebyPosition()
     {
         Vector3 startPosition = transform.position;
@@ -268,5 +288,11 @@ public class player : MonoBehaviour
     {
         gameObject.layer = 11;
         spriteRenderer.color = new Color(1, 1, 1, 1);
+    }
+
+    private void doorOpen()
+    {
+        Debug.Log("3");
+        door.transform.position = doorEnd.transform.position;
     }
 }
