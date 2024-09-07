@@ -42,7 +42,7 @@ public class bosPtennl : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("taget"))
+        if (collision.gameObject.CompareTag("attack"))
         {
             taget.transform.position = respawn.transform.position;
         }

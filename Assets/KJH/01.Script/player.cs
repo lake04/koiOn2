@@ -13,7 +13,16 @@ public class player : MonoBehaviour
     public float defaultSpeed = 10f;//달리기
     public bool isJump;
     public float jumpPower = 10f;
-    public int hp = 3;
+    //플래이어HP정보
+    [Header("PlayerHP")]
+    [SerializeField]
+    private Image imageScreen;
+    [SerializeField]
+    private float maxHP = 6;
+    private float currentHP;
+    public float MaxHP => maxHP;
+    public float CurrentHP => currentHP;
+
 
     //공격
     [Header("attack")]
@@ -49,6 +58,10 @@ public class player : MonoBehaviour
     [SerializeField]
     private GameObject door2;
 
+    private void Awake()
+    {
+        currentHP = maxHP;
+    }
     // Start is called before the first frame update
     void Start()
     {       
@@ -75,7 +88,7 @@ public class player : MonoBehaviour
         attack();
       
         //씬이동
-        if(hp <=0)
+        if(currentHP <=0)
         {
             SceneManager.LoadScene(1);
         }
@@ -130,7 +143,7 @@ public class player : MonoBehaviour
         //피격
         if (collision.gameObject.tag == "enemy" && !isInvincible)
         {
-            hp--;
+            currentHP--;
             //무적 타임
             OnDamged(collision.transform.position);
 
@@ -155,7 +168,9 @@ public class player : MonoBehaviour
         //피격
         if (collision.gameObject.tag == "attack")
         {
-            hp--;
+            currentHP--;
+            StopCoroutine("HitAlphaAnimation");
+            StartCoroutine("HitAlphaAnimation");
             //무적 타임
             OnDamged(collision.transform.position);
             //카메라 흔들기
