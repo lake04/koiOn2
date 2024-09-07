@@ -94,7 +94,7 @@ public class boss : MonoBehaviour
         hp = hp - damage;
         da.Play();
 
-        OnShakeCamera(0.1f, 0.9f);
+        OnShakeCamera(0.1f, 1.0f);
 
     }
 

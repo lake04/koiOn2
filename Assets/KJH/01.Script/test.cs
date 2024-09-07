@@ -14,6 +14,7 @@ public class test : MonoBehaviour
     public bool isSp;
     //소환할 오브젝트
     public GameObject att;
+
     private void Awake()
     {
         rangeCollider = rangObject.GetComponent<BoxCollider2D>();

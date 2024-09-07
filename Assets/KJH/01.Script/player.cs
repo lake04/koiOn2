@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class player : MonoBehaviour
 {
     [Header("player")]
@@ -28,6 +29,7 @@ public class player : MonoBehaviour
     Rigidbody2D rb;
     Animator anim;
     SpriteRenderer spriteRenderer;
+    private new Collider2D Collider2D;
 
     //카메라 흔들림
     private float shakeTime;
@@ -40,14 +42,16 @@ public class player : MonoBehaviour
 
     //문 관련인데 수정중
     [SerializeField]
-    private GameObject door;
+    private Transform door;
     [SerializeField]
-    private GameObject doorEnd;
+    private Transform doorEnd;
+    private float doorSpeed = 2f;
+    [SerializeField]
+    private GameObject door2;
 
     // Start is called before the first frame update
     void Start()
-    {
-
+    {       
         damagepnel.SetActive(false);
         defaultSpeed = moveSpeed;
         rb = GetComponent<Rigidbody2D>();
@@ -79,6 +83,13 @@ public class player : MonoBehaviour
     private void FixedUpdate()
     {
         Move();
+    }
+
+    private void LateUpdate()
+    {
+        //이동 제한 범위 보스전때 쓸거 (머리카락 보스) 이거로 머리카란 보스 랜덤으로 머리카락 떨어지는 패턴 구현
+        float x = Mathf.Clamp(transform.position.x, Constants.min.x, Constants.max.x);
+        transform.position = new Vector3(x, transform.position.y, transform.position.z);
     }
     private void Move()
     {
@@ -164,8 +175,9 @@ public class player : MonoBehaviour
     {
 
         if (Input.GetKeyDown(KeyCode.RightShift) && curTime <= 0)
-        {
-            if(spriteRenderer.flipX == true)
+        { 
+            anim.SetBool("isAttack", true);
+            if (spriteRenderer.flipX == true)
             {
                 Collider2D[] collider2D = Physics2D.OverlapBoxAll(pos2.position, boxSize, 0);
                 foreach (Collider2D collider in collider2D)
@@ -208,7 +220,7 @@ public class player : MonoBehaviour
                     if(collider.tag == "button")
                     {
                         doorOpen();
-                        Debug.Log("B");
+                       
                     }
                 }
                 Debug.Log("1");
@@ -220,6 +232,11 @@ public class player : MonoBehaviour
         if (curTime >= 0)
         {
             curTime = curTime - Time.deltaTime;
+            
+        }
+        else
+        {
+            anim.SetBool("isAttack", false);
         }
     }
 
@@ -293,6 +310,8 @@ public class player : MonoBehaviour
     private void doorOpen()
     {
         Debug.Log("3");
-        door.transform.position = doorEnd.transform.position;
+        door2.transform.position = Vector2.MoveTowards(door2.transform.position, doorEnd.position, Time.deltaTime * doorSpeed);
     }
+
+
 }
