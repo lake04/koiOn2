@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1928075fc3aa1264786164fde1cd2aef
+guid: 630588304eb7e8648a91877652b8077d
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -97,127 +97,169 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Sprite-0001_1-Sheet_0
+      name: Spritsdfs111111101_4-export 1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
-        height: 64
+        width: 24
+        height: 22
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a45e118d659f63d4a9e5b94e62f49b26
-      internalID: 1606925472
+      spriteID: 0d908a18fc0906041bf5264d3f04c1c0
+      internalID: 1373453193
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite-0001_1-Sheet_1
+      name: Spritsdfs111111101_4-export 1_1
       rect:
         serializedVersion: 2
-        x: 64
+        x: 24
         y: 0
-        width: 64
-        height: 64
+        width: 24
+        height: 22
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 79618d5d3442fd84397a0810808be022
-      internalID: 1628978583
+      spriteID: e92b9ab0fce052349b0addc588a67cea
+      internalID: -2008925164
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite-0001_1-Sheet_2
+      name: Spritsdfs111111101_4-export 1_2
       rect:
         serializedVersion: 2
-        x: 128
+        x: 48
         y: 0
-        width: 64
-        height: 64
+        width: 24
+        height: 22
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8c17867b2513a6e4ebc98b8274098de6
-      internalID: -1451886501
+      spriteID: 6cb8120728f82bd4694f8b1405cd62f2
+      internalID: 427608146
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite-0001_1-Sheet_3
+      name: Spritsdfs111111101_4-export 1_3
       rect:
         serializedVersion: 2
-        x: 192
+        x: 73
         y: 0
-        width: 64
-        height: 64
+        width: 24
+        height: 22
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 31ad85308bd9cd74a932d5f05af490a2
-      internalID: 1915845344
+      spriteID: adf92881da1e61f4ea8c8455fa51f5ad
+      internalID: -1084792106
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite-0001_1-Sheet_4
+      name: Spritsdfs111111101_4-export 1_4
       rect:
         serializedVersion: 2
-        x: 256
+        x: 96
         y: 0
-        width: 64
-        height: 64
+        width: 24
+        height: 22
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bd6a5427e5cd1f744931922ff3b17b60
-      internalID: 222593210
+      spriteID: abc0762eea8bc314e84f9cac3803f810
+      internalID: 1291183289
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite-0001_1-Sheet_5
+      name: Spritsdfs111111101_4-export 1_5
       rect:
         serializedVersion: 2
-        x: 320
+        x: 120
         y: 0
-        width: 64
-        height: 64
+        width: 24
+        height: 22
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f312932aff667604999c36e2dcdeb003
-      internalID: 1725506252
+      spriteID: db10b39c06294474688fd01e9d9ae7cc
+      internalID: 1289507998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spritsdfs111111101_4-export 1_6
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 24
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6462451e34e326843b51494114b6445b
+      internalID: 951227603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spritsdfs111111101_4-export 1_7
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 0
+        width: 24
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ed819044bf15af4a848da0f57e19a6d
+      internalID: -433008297
       vertices: []
       indices: 
       edges: []
@@ -233,12 +275,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Sprite-0001_1-Sheet_0: 1606925472
-      Sprite-0001_1-Sheet_1: 1628978583
-      Sprite-0001_1-Sheet_2: -1451886501
-      Sprite-0001_1-Sheet_3: 1915845344
-      Sprite-0001_1-Sheet_4: 222593210
-      Sprite-0001_1-Sheet_5: 1725506252
+      Spritsdfs111111101_4-export 1_0: 1373453193
+      Spritsdfs111111101_4-export 1_1: -2008925164
+      Spritsdfs111111101_4-export 1_2: 427608146
+      Spritsdfs111111101_4-export 1_3: -1084792106
+      Spritsdfs111111101_4-export 1_4: 1291183289
+      Spritsdfs111111101_4-export 1_5: 1289507998
+      Spritsdfs111111101_4-export 1_6: 951227603
+      Spritsdfs111111101_4-export 1_7: -433008297
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
