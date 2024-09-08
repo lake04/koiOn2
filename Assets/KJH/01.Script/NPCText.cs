@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 public class NPCText : MonoBehaviour
 {
@@ -23,56 +24,56 @@ public class NPCText : MonoBehaviour
     {
         Setup();
     }
-
-    void Update()
+    //update는 실행상호작용을 위한 코드
+    public void Update()
     {
-        if (isAutoStart)
+        if (isFirst)
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                Setup();
+                isFirst = false;
+                ui.SetActive(true);
+                UpdateDialog();
             }
         }
+        if (!isFirst)
+        {
+            UpdateDialog();
+        }
     }
+    //e코드 상용하기 위한 범위 지정
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
-        {
-            isAutoStart = true;
 
 
-        }
-
-
-
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.CompareTag("Player"))
         {
             ui.SetActive(true);
+            isFirst = true;
+        }
+        else
+        {
+            ui.SetActive(false);
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        isAutoStart = false;
-        ui.SetActive(false);
-    }
 
-
+    //ui창 꺼주는 역할
     private void Setup()
     {
         for(int i=0; i<speakers.Length; ++i)
         {
             SetActiveObjects(speakers[i], false);
-            speakers[i].spriteRenderer.gameObject.SetActive(true);
         }
     }
 
+    //내용 화살표 눌렀을 떄 넘어가는 역할 꺼지는 역할
     public bool UpdateDialog()
     {
-        if(isFirst == true)
+        if(isAutoStart && currentDialogIndex == -1)
         {
-            Setup();
-            if (isAutoStart) SetNextDialog();
+            //Setup();
+            SetNextDialog();
         }
 
         if (Input.GetMouseButton(0))
@@ -85,36 +86,48 @@ public class NPCText : MonoBehaviour
             {
                 for(int i =0; i<speakers.Length; ++i)
                 {
-                    SetActiveObjects(speakers[1], false);
-                    speakers[i].spriteRenderer.gameObject.SetActive(false);
+                    SetActiveObjects(speakers[i], false);
+                    
                 }
+                ui.SetActive(false);
+                isFirst = true;
             }
         }
 
         return false;
 
     }
-    
+    //동일 동일
     private void SetNextDialog()
     {
-        SetActiveObjects(speakers[currentDialogIndex], false);
+        if (currentDialogIndex >= 0)
+        {
+            SetActiveObjects(speakers[dialogs[currentDialogIndex].speakerIndex], false);
+        }
+        currentDialogIndex++;
+        if (currentDialogIndex < dialogs.Length)
+        {
+            int speakerIndex = dialogs[currentDialogIndex].speakerIndex;
+            SetActiveObjects(speakers[speakerIndex], true);
+            speakers[speakerIndex].textName.text = dialogs[currentDialogIndex].name;
+            speakers[speakerIndex].textDialogue.text = dialogs[currentDialogIndex].dialogue;
+        }
+        /*SetActiveObjects(speakers[currentDialogIndex], false);
         currentDialogIndex++;
         currentDialogIndex = dialogs[currentDialogIndex].speakerIndex;
         SetActiveObjects(speakers[currentDialogIndex], false);
         speakers[currentDialogIndex].textName.text = dialogs[currentDialogIndex].name;
         speakers[currentDialogIndex].textDialogue.text = dialogs[currentDialogIndex].dialogue;
-
+        */
     }
-
+    //투명한거 
     private void SetActiveObjects(Speaker speaker, bool visible)
     {
         speaker.imageDialog.gameObject.SetActive(visible);
         speaker.textName.gameObject.SetActive(visible);
         speaker.textDialogue.gameObject.SetActive(visible);
         speaker.objectArrow .SetActive(visible);
-        Color color = speaker.spriteRenderer.color;
-        color.a = visible == true ? 1 : 0.2f;
-        speaker.spriteRenderer.color = color;
+        
 
     }
 
@@ -122,7 +135,7 @@ public class NPCText : MonoBehaviour
 [System.Serializable]
 public struct Speaker
 {
-    public SpriteRenderer spriteRenderer;
+
     public Image imageDialog;
     public TextMeshProUGUI textName;
     public TextMeshProUGUI textDialogue;
