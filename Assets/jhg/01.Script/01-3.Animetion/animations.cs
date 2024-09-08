@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class animations : MonoBehaviour
 {
-    public Animator animator; // 애니메이션 컨트롤러
+    /*public Animator animator; // 애니메이션 컨트롤러
     public KeyCode key = KeyCode.RightShift; // 실행할 키
 
     void Update()
@@ -13,5 +13,5 @@ public class animations : MonoBehaviour
         {
             animator.SetTrigger("TitleAnim"); // 애니메이션 실행
         }
-    }
+    }*/
 }
