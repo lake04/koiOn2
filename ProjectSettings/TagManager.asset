@@ -11,6 +11,7 @@ TagManager:
   - onDamge
   - taget
   - button
+  - Root
   layers:
   - Default
   - TransparentFX
