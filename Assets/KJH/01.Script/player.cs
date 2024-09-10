@@ -50,10 +50,17 @@ public class player : MonoBehaviour
     private bool isInvincible = false;
     private float invincibleDuration = 2.0f; // 무적 상태 유지 시간 (예: 2초)
 
+    [Header("사운드")]
+    private AudioSource HitAudi;
+    private AudioSource JumpAudi;
+    private AudioSource ActAudi;
 
 
     private void Awake()
     {
+        HitAudi = GetComponents<AudioSource>()[2];
+        JumpAudi = GetComponents<AudioSource>()[1];
+        ActAudi = GetComponents<AudioSource>()[0];
         currentHP = maxHP;
     }
     // Start is called before the first frame update
@@ -77,6 +84,7 @@ public class player : MonoBehaviour
             anim.SetBool("isJump", true);
             if (isJump)
             {
+                JumpAudi.Play();
                 rb.velocity = Vector2.up * jumpPower;
                 isJump = false;
 
@@ -140,6 +148,7 @@ public class player : MonoBehaviour
         //피격
         if (collision.gameObject.tag == "enemy" && !isInvincible)
         {
+            HitAudi.Play();
             currentHP--;
             //무적 타임
             OnDamged(collision.transform.position);
@@ -165,7 +174,7 @@ public class player : MonoBehaviour
         //피격
         if (collision.gameObject.tag == "attack" && isDamge == false)
         {
-
+            HitAudi.Play();
             currentHP--;
             /*StopCoroutine("HitAlphaAnimation");
             StartCoroutine("HitAlphaAnimation");*/
@@ -186,6 +195,7 @@ public class player : MonoBehaviour
     {
         if (currentHP <= 0)
         {
+            HitAudi.Play();
             anim.SetBool("isDie", true);
 
             Invoke("seen", 2f);
