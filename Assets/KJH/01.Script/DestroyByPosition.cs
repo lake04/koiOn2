@@ -5,8 +5,8 @@ using UnityEngine;
 public class DestroyByPosition : MonoBehaviour
 {
     //화면 밖 일정 범위를 벗어날을 떄 삭제하기 위한 가중치 값
-    private float destroyWeight = 2;
-   private void LateUpate()
+    private float destroyWeight = 133f;
+   private void LateUpdate()
     {
         if( transform.position.x < Constants.min.x - destroyWeight ||
             transform.position.x > Constants.max.x + destroyWeight ||

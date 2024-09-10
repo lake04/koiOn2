@@ -19,6 +19,6 @@ public class TextMeshPro : MonoBehaviour
     private void Update()
     {
         textPlayerHP.text = playerHP.CurrentHP + "/" + playerHP.MaxHP;
-        textRoot.text = root.CurrentRoot.ToString();
+      
     }
 }

@@ -16,7 +16,7 @@ public class boss : MonoBehaviour
     Animator anim;
     //스폰 위치
     public  Transform spawn;
-    
+    private bosseEnemy EnemyHP;
     public Transform bulltSp;
 
     //소환 패턴 쿨타임
@@ -41,6 +41,7 @@ public class boss : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        EnemyHP = GetComponent<bosseEnemy>();
         da.Stop();
         /*InvokeRepeating("bulltSpawn", 2f, 3f);*/
         
@@ -80,6 +81,7 @@ public class boss : MonoBehaviour
     {
         if (hp % 10 == 0 && hp < 50 && hp >= 10&& !hasSpawned)  // 90부터 10까지 10단위로 체크
         {
+           /* EnemyHP.hp++;*/
             Instantiate(enemy, spawn.position, spawn.rotation);
             hasSpawned = true;
         }

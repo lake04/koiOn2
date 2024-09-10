@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using Unity.VisualScripting;
 
 public class NPCText : MonoBehaviour
 {
@@ -18,16 +17,17 @@ public class NPCText : MonoBehaviour
     private int currentSpeakerIndex = 0;
     [SerializeField]
     public GameObject ui;
-
+    private bool isInRange = false; // 플레이어가 NPC 영역에 들어왔는지 여부를 확인하는 플래그
 
     private void Awake()
     {
         Setup();
     }
-    //update는 실행상호작용을 위한 코드
+
+    // Update는 실행 상호작용을 위한 코드
     public void Update()
     {
-        if (isFirst)
+        if (isInRange && isFirst)
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
@@ -36,43 +36,45 @@ public class NPCText : MonoBehaviour
                 UpdateDialog();
             }
         }
-        if (!isFirst)
+        else if (!isFirst)
         {
             UpdateDialog();
         }
     }
-    //e코드 상용하기 위한 범위 지정
+
+    // e 코드 상용하기 위한 범위 지정
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
-
         if (collision.gameObject.CompareTag("Player"))
         {
+            isInRange = true;
             ui.SetActive(true);
-            isFirst = true;
         }
-        else
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
         {
+            isInRange = false;
             ui.SetActive(false);
         }
     }
 
-
-    //ui창 꺼주는 역할
+    // UI 창 꺼주는 역할
     private void Setup()
     {
-        for(int i=0; i<speakers.Length; ++i)
+        for (int i = 0; i < speakers.Length; ++i)
         {
             SetActiveObjects(speakers[i], false);
         }
     }
 
-    //내용 화살표 눌렀을 떄 넘어가는 역할 꺼지는 역할
+    // 내용 화살표 눌렀을 때 넘어가는 역할 꺼지는 역할
     public bool UpdateDialog()
     {
-        if(isAutoStart && currentDialogIndex == -1)
+        if (isAutoStart && currentDialogIndex == -1)
         {
-            //Setup();
             SetNextDialog();
         }
 
@@ -84,10 +86,9 @@ public class NPCText : MonoBehaviour
             }
             else
             {
-                for(int i =0; i<speakers.Length; ++i)
+                for (int i = 0; i < speakers.Length; ++i)
                 {
                     SetActiveObjects(speakers[i], false);
-                    
                 }
                 ui.SetActive(false);
                 isFirst = true;
@@ -95,9 +96,9 @@ public class NPCText : MonoBehaviour
         }
 
         return false;
-
     }
-    //동일 동일
+
+    // 다음 대화 설정
     private void SetNextDialog()
     {
         if (currentDialogIndex >= 0)
@@ -112,35 +113,25 @@ public class NPCText : MonoBehaviour
             speakers[speakerIndex].textName.text = dialogs[currentDialogIndex].name;
             speakers[speakerIndex].textDialogue.text = dialogs[currentDialogIndex].dialogue;
         }
-        /*SetActiveObjects(speakers[currentDialogIndex], false);
-        currentDialogIndex++;
-        currentDialogIndex = dialogs[currentDialogIndex].speakerIndex;
-        SetActiveObjects(speakers[currentDialogIndex], false);
-        speakers[currentDialogIndex].textName.text = dialogs[currentDialogIndex].name;
-        speakers[currentDialogIndex].textDialogue.text = dialogs[currentDialogIndex].dialogue;
-        */
     }
-    //투명한거 
+
+    // 투명한 것
     private void SetActiveObjects(Speaker speaker, bool visible)
     {
         speaker.imageDialog.gameObject.SetActive(visible);
         speaker.textName.gameObject.SetActive(visible);
         speaker.textDialogue.gameObject.SetActive(visible);
-        speaker.objectArrow .SetActive(visible);
-        
-
+        speaker.objectArrow.SetActive(visible);
     }
-
 }
+
 [System.Serializable]
 public struct Speaker
 {
-
     public Image imageDialog;
     public TextMeshProUGUI textName;
     public TextMeshProUGUI textDialogue;
     public GameObject objectArrow;
-
 }
 
 [System.Serializable]

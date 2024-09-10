@@ -8,7 +8,8 @@ public class boos2 : MonoBehaviour
     private float moveSpeed;
     [SerializeField]
     private Vector3 moveDirection;
-
+    [SerializeField]
+   
     // Update is called once per frame
     void Update()
     {

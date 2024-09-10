@@ -8,9 +8,8 @@ public class Root : MonoBehaviour
     [SerializeField]
     private int currentRoot = 0;
 
-    public int CurrentRoot
+    public void CurrentRoot()
     {
-        set => currentRoot = Mathf.Max(0, value);
-        get => currentRoot;
+        currentRoot++;
     }
 }

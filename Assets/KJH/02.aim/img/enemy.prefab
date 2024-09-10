@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3922486862451108381}
   - component: {fileID: 1881060614921515712}
   - component: {fileID: -4435637208464863906}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: enemy
   m_TagString: enemy
   m_Icon: {fileID: 0}
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -161374729, guid: ff8536bd53f81a546ba10b96e09edee2, type: 3}
+  m_Sprite: {fileID: 1197519901, guid: 1a4ff06b7af717646ba24896511a7f38, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -123,14 +123,14 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.75, y: 0.87}
+    oldSize: {x: 2.75, y: 3.375}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.75, y: 0.87}
+  m_Size: {x: 2.75, y: 3.375}
   m_EdgeRadius: 0
 --- !u!50 &1881060614921515712
 Rigidbody2D:
@@ -174,4 +174,3 @@ MonoBehaviour:
   hp: 3
   EnMoveSpeed: 0
   nextMove: 2
-  da: {fileID: 0}

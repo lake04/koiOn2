@@ -9,6 +9,12 @@ public class boss2Pentten : MonoBehaviour
     [SerializeField]
     private float spawnCycle; //利 积己 林扁
 
+    private hedaBoss boss2;
+
+    private void Update()
+    {
+        
+    }
     private void OnEnable()
     {
         StartCoroutine(nameof(SpawnEnemys));
@@ -24,9 +30,13 @@ public class boss2Pentten : MonoBehaviour
         float waitTime = 1;
         yield return new WaitForSeconds(waitTime);
 
-        Vector3 position = new Vector3(Random.Range(Constants.min.x, Constants.max.x), Constants.max.y, 0);
-        Instantiate(enemyPrefab, position, Quaternion.identity);
-        yield return new WaitForSeconds(spawnCycle);
+        while (true)
+        {
+            Vector3 position = new Vector3(Random.Range(Constants.min.x, Constants.max.x), Constants.max.y, 0);
+            Instantiate(enemyPrefab, position, Quaternion.identity);
+            yield return new WaitForSeconds(spawnCycle);
+        }
+        
 
     }   
 }

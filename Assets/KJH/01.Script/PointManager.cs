@@ -22,7 +22,7 @@ public class PointManager : MonoBehaviour
     {
         // UI 업데이트
         textPlayerHP.text = playerHP.CurrentHP + "/" + playerHP.MaxHP;
-        textRoot.text = root.CurrentRoot.ToString();
+            
 
         // 포인트가 특정 값에 도달했는지 확인
         CheckPoints();

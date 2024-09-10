@@ -15,7 +15,7 @@ public class NewBehaviourScript : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            SceneManager.LoadScene("KJH");
+            SceneManager.LoadScene("2");
         }
     }
 

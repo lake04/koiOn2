@@ -59,6 +59,7 @@ public class player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         damagepnel.SetActive(false);
         defaultSpeed = moveSpeed;
         rb = GetComponent<Rigidbody2D>();
@@ -178,7 +179,10 @@ public class player : MonoBehaviour
             StartCoroutine(coolTime());
             StartCoroutine(damgePanel());
         }
-
+        if (collision.gameObject.tag == "root" )
+        {
+            
+        }
 
     }
 
@@ -202,6 +206,7 @@ public class player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.RightShift) && curTime <= 0)
         {
             anim.SetBool("isAttack", true);
+            OnShakeCamera(0.1f, 0.13f);
             if (spriteRenderer.flipX == true)
             {
                 Collider2D[] collider2D = Physics2D.OverlapBoxAll(pos2.position, boxSize, 0);
@@ -211,7 +216,11 @@ public class player : MonoBehaviour
                     {
                         collider.GetComponent<boss>().TakeDamage(2);
                     }
+                    if (collider.tag == "boss2")
+                    {
+                        collider.GetComponent<hedaBoss>().TakeDamage(2);
 
+                    }
 
                     if (collider.tag == "enemy")
                     {
@@ -232,6 +241,11 @@ public class player : MonoBehaviour
                     if (collider.tag == "boss")
                     {
                         collider.GetComponent<boss>().TakeDamage(2);
+
+                    }
+                    if (collider.tag == "boss2")
+                    {
+                        collider.GetComponent<hedaBoss>().TakeDamage(2);
 
                     }
                     if (collider.tag == "enemy")
