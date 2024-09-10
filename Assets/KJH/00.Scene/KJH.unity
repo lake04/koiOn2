@@ -38,6 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -379,6 +380,7 @@ MonoBehaviour:
   spawn: {fileID: 2087868663}
   bulltSp: {fileID: 297021374}
   da: {fileID: 1611039302}
+  patten: {fileID: 0}
 --- !u!95 &9979351
 Animator:
   serializedVersion: 5
@@ -3087,9 +3089,6 @@ MonoBehaviour:
   pos2: {fileID: 1590120211}
   boxSize: {x: 1, y: 1}
   damagepnel: {fileID: 1600736517}
-  door: {fileID: 1952134766}
-  doorEnd: {fileID: 15718444}
-  door2: {fileID: 1952134764}
 --- !u!95 &1020935417
 Animator:
   serializedVersion: 5
@@ -3920,7 +3919,7 @@ Transform:
   m_GameObject: {fileID: 1346743856}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -25.95, y: 0.4233944, z: -0.12641373}
+  m_LocalPosition: {x: 26.3, y: -21.6, z: -0.12641373}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

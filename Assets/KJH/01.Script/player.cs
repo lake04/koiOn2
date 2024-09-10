@@ -34,6 +34,7 @@ public class player : MonoBehaviour
     //피격 이펙트
     [SerializeField]
     private GameObject damagepnel;
+    private bool isDamge = false;
 
     Rigidbody2D rb;
     Animator anim;
@@ -49,14 +50,7 @@ public class player : MonoBehaviour
     private bool isInvincible = false;
     private float invincibleDuration = 2.0f; // 무적 상태 유지 시간 (예: 2초)
 
-    //문 관련인데 수정중
-    [SerializeField]
-    private Transform door;
-    [SerializeField]
-    private Transform doorEnd;
-    private float doorSpeed = 2f;
-    [SerializeField]
-    private GameObject door2;
+
 
     private void Awake()
     {
@@ -64,7 +58,7 @@ public class player : MonoBehaviour
     }
     // Start is called before the first frame update
     void Start()
-    {       
+    {
         damagepnel.SetActive(false);
         defaultSpeed = moveSpeed;
         rb = GetComponent<Rigidbody2D>();
@@ -74,7 +68,10 @@ public class player : MonoBehaviour
 
 
     void Update()
-    {   //점프
+    {
+        Die();
+
+        //점프
         if (Input.GetKeyDown(KeyCode.Space))
         {
             anim.SetBool("isJump", true);
@@ -82,13 +79,13 @@ public class player : MonoBehaviour
             {
                 rb.velocity = Vector2.up * jumpPower;
                 isJump = false;
-               
+
             }
         }
         attack();
-      
+
         //씬이동
-        if(currentHP <=0)
+        if (currentHP <= 0)
         {
             SceneManager.LoadScene(1);
         }
@@ -129,7 +126,7 @@ public class player : MonoBehaviour
         }
         else
         {
-            
+
             defaultSpeed = moveSpeed;
         }
     }
@@ -160,44 +157,57 @@ public class player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if ( collision.gameObject.tag == "boss")
+        if (collision.gameObject.tag == "boss")
         {
             isJump = true;
-           
+
         }
         //피격
-        if (collision.gameObject.tag == "attack")
+        if (collision.gameObject.tag == "attack" && isDamge == false)
         {
+
             currentHP--;
-            StopCoroutine("HitAlphaAnimation");
-            StartCoroutine("HitAlphaAnimation");
+            /*StopCoroutine("HitAlphaAnimation");
+            StartCoroutine("HitAlphaAnimation");*/
             //무적 타임
             OnDamged(collision.transform.position);
             //카메라 흔들기
             OnShakeCamera(0.1f, 1f);
-          
+
             damagepnel.SetActive(true);
             StartCoroutine(coolTime());
             StartCoroutine(damgePanel());
         }
 
-      
-    }
-      
 
+    }
+
+    private void Die()
+    {
+        if (currentHP <= 0)
+        {
+            anim.SetBool("isDie", true);
+
+            Invoke("seen", 2f);
+        }
+    }
+    private void seen()
+    {
+        SceneManager.LoadScene("Title2.0");
+    }
 
     private void attack()
     {
 
         if (Input.GetKeyDown(KeyCode.RightShift) && curTime <= 0)
-        { 
+        {
             anim.SetBool("isAttack", true);
             if (spriteRenderer.flipX == true)
             {
                 Collider2D[] collider2D = Physics2D.OverlapBoxAll(pos2.position, boxSize, 0);
                 foreach (Collider2D collider in collider2D)
                 {
-                    if(collider.tag == "boss")
+                    if (collider.tag == "boss")
                     {
                         collider.GetComponent<boss>().TakeDamage(2);
                     }
@@ -207,15 +217,11 @@ public class player : MonoBehaviour
                     {
                         collider.GetComponent<bosseEnemy>().TakeDamage(1);
                     }
-                    if (collider.tag == "button")
-                    {
-                        doorOpen();
 
-                    }
                 }
                 Debug.Log("2");
-                curTime = 1;
-                Invoke("outatt", 1f);
+                curTime = 0.5f;
+                //Invoke("outatt", 0.5f);
 
             }
             if (spriteRenderer.flipX == false)
@@ -226,28 +232,24 @@ public class player : MonoBehaviour
                     if (collider.tag == "boss")
                     {
                         collider.GetComponent<boss>().TakeDamage(2);
-                        
+
                     }
                     if (collider.tag == "enemy")
                     {
                         collider.GetComponent<bosseEnemy>().TakeDamage(1);
                     }
-                    if(collider.tag == "button")
-                    {
-                        doorOpen();
-                       
-                    }
+
                 }
                 Debug.Log("1");
-                curTime = 1;
-                Invoke("outatt", 1f);
+                curTime = 0.5f;
+                /*Invoke("outatt", 1f);*/
             }
         }
 
         if (curTime >= 0)
         {
             curTime = curTime - Time.deltaTime;
-            
+
         }
         else
         {
@@ -260,8 +262,8 @@ public class player : MonoBehaviour
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireCube(pos.position, boxSize);
 
-            Gizmos.color = Color.blue;
-            Gizmos.DrawWireCube(pos2.position, boxSize);
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireCube(pos2.position, boxSize);
 
     }
     IEnumerator coolTime()
@@ -269,14 +271,14 @@ public class player : MonoBehaviour
         isInvincible = true;  // 무적 상태 시작
         yield return new WaitForSeconds(invincibleDuration);  // 무적 시간 동안 대기
         isInvincible = false;  // 무적 상태 해제
-        
+
     }
     IEnumerator damgePanel()
     {//데미지 패널 쿨타임
         yield return new WaitForSeconds(camerTime);
-         
-         damagepnel.SetActive(false);
-         camerTime = 0.2f;
+
+        damagepnel.SetActive(false);
+        camerTime = 0.2f;
     }
     //카메라
     public void OnShakeCamera(float shakeTime = 1.0f, float shakeIntensity = 0.1f)
@@ -307,7 +309,7 @@ public class player : MonoBehaviour
 
     void OnDamged(Vector2 targetPos)
     {
-   
+        isDamge = true;
         //Change layer (Immprtal Active)
         gameObject.layer = 9;
 
@@ -318,15 +320,11 @@ public class player : MonoBehaviour
     }
     void OffDamged()
     {
+        isDamge = false;
         gameObject.layer = 11;
         spriteRenderer.color = new Color(1, 1, 1, 1);
     }
 
-    private void doorOpen()
-    {
-        Debug.Log("3");
-        door2.transform.position = Vector2.MoveTowards(door2.transform.position, doorEnd.position, Time.deltaTime * doorSpeed);
-    }
 
 
 }

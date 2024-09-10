@@ -1,12 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class boss : MonoBehaviour
 {
-    
-    public  int hp = 52;
- 
+    private const WrapMode once = WrapMode.Once;
+    public int hp = 52;
+
     //소환
     [SerializeField]
     GameObject enemy;
@@ -15,11 +17,11 @@ public class boss : MonoBehaviour
 
     Animator anim;
     //스폰 위치
-    public  Transform spawn;
-    public  Transform bulltSp;
+    public Transform spawn;
+    public Transform bulltSp;
 
     //소환 패턴 쿨타임
-   // private float coolTime = 5f;
+    // private float coolTime = 5f;
     private float coolTime = 1.5f;
     private float pattern1Time = 1f;
     private bool isAk;
@@ -33,42 +35,49 @@ public class boss : MonoBehaviour
 
     bool hasSpawned = false;
 
-    
+    //애니메이션
+    List<string> animArray;
+    [SerializeField]
+    private Animator patten;
+    int index = 0;
 
-  
 
     // Start is called before the first frame update
     void Start()
     {
+
+        patten = gameObject.GetComponent<Animator>();
+        animArray = new List<string>();
         da.Stop();
-        /*InvokeRepeating("bulltSpawn", 2f, 3f);*/
-        
+        AnimationArray();
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
-       
+
 
         SpawnEnemyAtHP(hp);
-        if (coolTime<=0)
-        { 
-               
-        }
-        else if(coolTime >=0)
+        if (coolTime <= 0)
         {
-             
+
+        }
+        else if (coolTime >= 0)
+        {
+
             coolTime -= Time.deltaTime;
         }
-      
 
-        if (hp<=0)
+
+        if (hp <= 0)
         {
             Destroy(this.gameObject);
         }
     }
 
- 
+
     //소환 패턴 쿨타임
     private IEnumerator pattern1()
     {
@@ -77,21 +86,33 @@ public class boss : MonoBehaviour
     }
     void SpawnEnemyAtHP(int hp)
     {
-        if (hp % 10 == 0 && hp < 50 && hp >= 10&& !hasSpawned)  // 90부터 10까지 10단위로 체크
+        if (hp % 10 == 0 && hp < 50 && hp >= 10 && !hasSpawned)  // 90부터 10까지 10단위로 체크
         {
+
+            AnimationArray();
+            OnShakeCamera();
+            shakebyPosition();
             Instantiate(enemy, spawn.position, spawn.rotation);
             hasSpawned = true;
         }
-         else if(hp%10 != 0)
+        else if (hp % 10 != 0)
         {
-            hasSpawned=false;
+            hasSpawned = false;
         }
+    }
+    private int animIndex = 0;
+    public void AnimationArray()
+    {
+        animIndex++;
+        patten.SetTrigger(animIndex.ToString("D2"));
+
     }
 
     //피격
     public void TakeDamage(int damage)
     {
         hp = hp - damage;
+        animArray = new List<string>();
         da.Play();
 
         OnShakeCamera(0.1f, 1.0f);
@@ -122,10 +143,14 @@ public class boss : MonoBehaviour
         transform.position = startPosition;
     }
 
-   
 
-    private void bulltSpawn()
+
+    public void PlayAnimation(int animationIndex)
     {
-        Instantiate(bullet, bulltSp.transform.position, Quaternion.identity);
+        if (animationIndex >= 0 && animationIndex < animArray.Count)
+        {
+            patten.Play(animArray[animationIndex]);
+        }
+
     }
 }
