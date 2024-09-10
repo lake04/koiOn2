@@ -14,11 +14,11 @@ public class TextMeshPro : MonoBehaviour
     private player playerHP;
     [SerializeField]
     private Root root;
-
+   
 
     private void Update()
     {
         textPlayerHP.text = playerHP.CurrentHP + "/" + playerHP.MaxHP;
-        //textRoot.text = root.CurrentRoot.ToString();
+        textRoot.text = root.CurrentRoot.ToString();
     }
 }
